@@ -2,10 +2,10 @@
 
 namespace App\Domain\User\Actions;
 
+use App\Domain\Role\Enums\RoleGroupEnum;
 use Spatie\LaravelData\Attributes\Validation\ArrayType;
 use Spatie\LaravelData\Attributes\Validation\Email;
-use Spatie\LaravelData\Attributes\Validation\Exists;
-use Spatie\LaravelData\Attributes\Validation\IntegerType;
+use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Nullable;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\Validation\StringType;
@@ -18,6 +18,9 @@ class UserData extends Data
         #[Required, StringType]
         public string|Optional $name,
 
+        #[Nullable, StringType, In([RoleGroupEnum::ADMIN, RoleGroupEnum::CLIENT])]
+        public ?string         $group,
+
         #[Required, StringType, Email]
         public string|Optional $email,
 
@@ -25,7 +28,8 @@ class UserData extends Data
         public string|Optional $password,
 
         #[Required, ArrayType]
-        public array|Optional $roles,
-    ) {
+        public array  $roles,
+    )
+    {
     }
 }

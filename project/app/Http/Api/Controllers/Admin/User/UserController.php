@@ -6,7 +6,6 @@ use App\Domain\User\Actions\CreateUserAction;
 use App\Domain\User\Actions\DeleteUserAction;
 use App\Domain\User\Actions\UpdateUserAction;
 use App\Domain\User\Actions\UserData;
-use App\Domain\User\Filters\MainAccountAndAffiliatedUsersFilter;
 use App\Domain\User\Models\User;
 use App\Http\Api\Requests\Admin\UserRequest;
 use App\Http\Api\Resources\Admin\UserResource;
@@ -17,17 +16,16 @@ class UserController extends ResourceController
 {
     public function index()
     {
-        $this->authorize('viewAny', User::class);
+//        $this->authorize('viewAny', User::class);
 
         return pagination(User::class)
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
                 AllowedFilter::partial('role', 'roles.name'),
-                AllowedFilter::exact('group', 'roles.group'),
-                AllowedFilter::custom('main_account', new MainAccountAndAffiliatedUsersFilter()),
+                AllowedFilter::partial('group'),
             ])
-            ->with(['roles', 'account.accountCustomer'])
+            ->with(['roles', 'permissions'])
             ->allowedSorts(['created_at', 'updated_at'])
             ->defaultSort('-created_at')
             ->resource(UserResource::class);
@@ -35,16 +33,16 @@ class UserController extends ResourceController
 
     public function show(User $user)
     {
-        $this->authorize('view', $user);
+//        $this->authorize('view', $user);
 
-        $user->loadMissing('roles', 'account');
+        $user->loadMissing('roles', 'permissions');
 
         return UserResource::make($user);
     }
 
     public function store(UserRequest $request)
     {
-        $this->authorize('create', User::class);
+//        $this->authorize('create', User::class);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -56,7 +54,7 @@ class UserController extends ResourceController
 
     public function update(UserRequest $request, User $user)
     {
-        $this->authorize('update', $user);
+//        $this->authorize('update', $user);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -68,7 +66,7 @@ class UserController extends ResourceController
 
     public function destroy(User $user)
     {
-        $this->authorize('delete', $user);
+//        $this->authorize('delete', $user);
 
         app(DeleteUserAction::class)
             ->execute($user);

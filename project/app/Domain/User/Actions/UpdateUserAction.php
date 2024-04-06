@@ -15,6 +15,10 @@ class UpdateUserAction
             $dataArray['password'] = Hash::make($data->password);
         }
 
+        if ($roles = data_get($dataArray, 'roles')) {
+            $user->syncRoles($roles);
+        }
+
         $user->refresh();
 
         $user->update($dataArray);
