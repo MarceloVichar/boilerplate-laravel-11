@@ -1,0 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Api\Controllers\Admin\Role\RoleController;
+use App\Http\Api\Controllers\Admin\Permission\PermissionController;
+
+Route::get('/permissions', PermissionController::class);
+
+Route::apiResources([
+    'roles' => RoleController::class,
+]);
