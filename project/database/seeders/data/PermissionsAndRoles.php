@@ -35,8 +35,7 @@ class PermissionsAndRoles
             'users' => static::crud(),
             'roles' => static::crud(),
             'permissions' => collect([
-                'index',
-                'sync-permissions',
+                'view any',
             ])
         ]);
     }

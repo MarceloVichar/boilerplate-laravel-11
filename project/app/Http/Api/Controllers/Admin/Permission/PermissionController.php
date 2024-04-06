@@ -14,6 +14,8 @@ class PermissionController
 
     public function __invoke(Request $request)
     {
+        $this->authorize('viewAny', Permission::class);
+
         $group = $request->query('group');
 
         $permissionList = match ($group) {

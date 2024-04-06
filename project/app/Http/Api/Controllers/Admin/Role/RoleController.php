@@ -19,7 +19,7 @@ class RoleController extends ResourceController
 
     public function index(Request $request)
     {
-//        $this->authorize('viewAny', Role::class);
+        $this->authorize('viewAny', Role::class);
 
         $group = $request->query('group');
         $name = $request->query('name');
@@ -41,7 +41,7 @@ class RoleController extends ResourceController
 
     public function show(Role $role)
     {
-//        $this->authorize('view', $role);
+        $this->authorize('view', $role);
 
         $role->load('permissions');
 
@@ -50,7 +50,7 @@ class RoleController extends ResourceController
 
     public function store(RoleRequest $request)
     {
-//        $this->authorize('create', Role::class);
+        $this->authorize('create', Role::class);
 
         $data = RoleData::validateAndCreate($request->validated());
 
@@ -62,7 +62,7 @@ class RoleController extends ResourceController
 
     public function update(RoleRequest $request, Role $role)
     {
-//        $this->authorize('update', $role);
+        $this->authorize('update', $role);
 
         $data = RoleData::validateAndCreate($request->validated());
 
@@ -74,7 +74,7 @@ class RoleController extends ResourceController
 
     public function destroy(Role $role)
     {
-//        $this->authorize('delete', $role);
+        $this->authorize('delete', $role);
 
         app(DeleteRoleAction::class)
             ->execute($role);

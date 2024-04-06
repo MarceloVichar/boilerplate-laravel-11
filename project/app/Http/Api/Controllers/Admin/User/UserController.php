@@ -16,7 +16,7 @@ class UserController extends ResourceController
 {
     public function index()
     {
-//        $this->authorize('viewAny', User::class);
+        $this->authorize('viewAny', User::class);
 
         return pagination(User::class)
             ->allowedFilters([
@@ -33,7 +33,7 @@ class UserController extends ResourceController
 
     public function show(User $user)
     {
-//        $this->authorize('view', $user);
+        $this->authorize('view', $user);
 
         $user->loadMissing('roles', 'permissions');
 
@@ -42,7 +42,7 @@ class UserController extends ResourceController
 
     public function store(UserRequest $request)
     {
-//        $this->authorize('create', User::class);
+        $this->authorize('create', User::class);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -54,7 +54,7 @@ class UserController extends ResourceController
 
     public function update(UserRequest $request, User $user)
     {
-//        $this->authorize('update', $user);
+        $this->authorize('update', $user);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -66,7 +66,7 @@ class UserController extends ResourceController
 
     public function destroy(User $user)
     {
-//        $this->authorize('delete', $user);
+        $this->authorize('delete', $user);
 
         app(DeleteUserAction::class)
             ->execute($user);
