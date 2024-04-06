@@ -10,22 +10,20 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        $admin = User::factory()->create([
+        User::factory()
+            ->admin()
+            ->create([
             'name' => 'Test User Admin',
             'email' => 'admin@admin.com',
             'password' => '12345678',
-            'group' => RoleGroupEnum::ADMIN
         ]);
 
-        $admin->assignRole('admin');
-
-        $client = User::factory()->create([
+        User::factory()
+            ->client()
+            ->create([
             'name' => 'Test User Client',
             'email' => 'client@client.com',
             'password' => '12345678',
-            'group' => RoleGroupEnum::CLIENT
         ]);
-
-        $client->assignRole('client');
     }
 }
