@@ -27,8 +27,8 @@ class UserData extends Data
         #[Required, StringType]
         public string|Optional $password,
 
-        #[Required, ArrayType]
-        public array  $roles,
+        #[Nullable, ArrayType]
+        public array|Optional $roles,
     )
     {
     }

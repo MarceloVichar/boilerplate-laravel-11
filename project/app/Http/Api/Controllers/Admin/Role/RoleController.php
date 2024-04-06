@@ -45,7 +45,7 @@ class RoleController extends ResourceController
 
         $role->load('permissions');
 
-        return RoleResource::make($role);
+        return response()->json(RoleResource::make($role));
     }
 
     public function store(RoleRequest $request)
@@ -57,7 +57,7 @@ class RoleController extends ResourceController
         $role = app(CreateRoleAction::class)
             ->execute($data);
 
-        return RoleResource::make($role);
+        return response()->json(RoleResource::make($role), 201);
     }
 
     public function update(RoleRequest $request, Role $role)
@@ -69,7 +69,7 @@ class RoleController extends ResourceController
         $role = app(UpdateRoleAction::class)
             ->execute($data, $role);
 
-        return RoleResource::make($role);
+        return response()->json(RoleResource::make($role));
     }
 
     public function destroy(Role $role)
