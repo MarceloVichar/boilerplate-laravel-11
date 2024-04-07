@@ -13,9 +13,9 @@ class DeleteRoleAction
             throw new RoleHasUsersException();
         }
 
-        if (!!$role->permissions()->count()) {
+        if ((bool) $role->permissions()->count()) {
             $role->permissions()->detach();
-        };
+        }
 
         return $role->delete();
     }

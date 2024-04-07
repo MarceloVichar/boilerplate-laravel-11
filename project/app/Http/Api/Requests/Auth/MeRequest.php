@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Api\Requests\Auth;
 
 use App\Http\Shared\Requests\FormRequest;

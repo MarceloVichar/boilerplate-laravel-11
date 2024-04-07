@@ -17,4 +17,3 @@ class Role extends SpatieRole
         return RoleFactory::new();
     }
 }
-

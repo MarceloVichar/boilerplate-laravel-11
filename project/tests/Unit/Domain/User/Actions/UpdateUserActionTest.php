@@ -50,7 +50,7 @@ class UpdateUserActionTest extends TestCaseUnit
             'email' => 'test@hotmail.com',
             'password' => '123456',
             'group' => RoleGroupEnum::CLIENT,
-            'roles' => ['client']
+            'roles' => ['client'],
         ]);
 
         $userMock = $this->createMock(User::class);

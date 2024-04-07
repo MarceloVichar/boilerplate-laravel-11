@@ -45,7 +45,7 @@ class UserRequest extends FormRequest
                 'required',
                 'string',
                 Rule::exists('roles', 'name'),
-                new RoleBelongsToUserGroup($this->input('group'))
+                new RoleBelongsToUserGroup($this->input('group')),
             ],
         ];
 

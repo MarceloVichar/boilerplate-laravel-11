@@ -9,7 +9,7 @@ class PermissionsAndRoles
 {
     private static function getPermissionsValues()
     {
-        return fn($key) => static::getPermissions()
+        return fn ($key) => static::getPermissions()
             ->get($key)
             ->values();
     }
@@ -19,12 +19,12 @@ class PermissionsAndRoles
         return [
             'admin' => [
                 'group' => RoleGroupEnum::ADMIN,
-                'permissions' => self::getAdminPermissions()
+                'permissions' => self::getAdminPermissions(),
             ],
 
             'client' => [
                 'group' => RoleGroupEnum::CLIENT,
-                'permissions' => self::getClientPermissions()
+                'permissions' => self::getClientPermissions(),
             ],
         ];
     }
@@ -36,7 +36,7 @@ class PermissionsAndRoles
             'roles' => static::crud(),
             'permissions' => collect([
                 'view any',
-            ])
+            ]),
         ]);
     }
 
@@ -60,7 +60,7 @@ class PermissionsAndRoles
         return [
             'users' => $permissions('users'),
             'roles' => $permissions('roles'),
-            'permissions' => $permissions('permissions')
+            'permissions' => $permissions('permissions'),
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 if (! function_exists('current_user')) {
     /**
      * Retorna uma instância do usuário corrente.

@@ -24,6 +24,7 @@ class CreateRoleAction
             }
 
             DB::commit();
+
             return $role;
         } catch (\Exception $exception) {
             DB::rollback();

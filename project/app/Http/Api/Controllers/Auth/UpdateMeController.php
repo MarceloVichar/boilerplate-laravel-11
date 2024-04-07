@@ -9,7 +9,7 @@ use App\Http\Api\Resources\Auth\MeResource;
 use App\Http\Shared\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 
-class UpdateMeController  extends Controller
+class UpdateMeController extends Controller
 {
     public function __invoke(MeRequest $request): JsonResponse
     {

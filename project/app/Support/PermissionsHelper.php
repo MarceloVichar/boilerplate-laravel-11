@@ -10,7 +10,7 @@ class PermissionsHelper
 
         foreach ($arrayOfPermissions as $prefix => $permission) {
             $newPrefix = (! is_int($prefix))
-                ? $globalPrefix . ' ' . $prefix
+                ? $globalPrefix.' '.$prefix
                 : $globalPrefix;
 
             $implodedPermission = static::getImplodedPermissions($permission, $newPrefix);
@@ -26,7 +26,7 @@ class PermissionsHelper
             return static::getFlattenPermissions($permission, $prefix);
         }
 
-        return [trim(trim((string) $prefix) . ' ' . trim($permission))];
+        return [trim(trim((string) $prefix).' '.trim($permission))];
     }
 
     public static function getPermissionsByGroup(array $permissions): array

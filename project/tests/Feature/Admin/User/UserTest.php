@@ -43,7 +43,6 @@ class UserTest extends TestCaseFeature
             ]);
     }
 
-
     public function test_should_return_one_user()
     {
         $user = User::factory()

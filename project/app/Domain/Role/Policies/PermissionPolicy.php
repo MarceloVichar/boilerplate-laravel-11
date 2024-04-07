@@ -2,7 +2,6 @@
 
 namespace App\Domain\Role\Policies;
 
-use App\Domain\Shared\Services\LaravelPermissions\Role;
 use App\Domain\User\Models\User;
 
 class PermissionPolicy

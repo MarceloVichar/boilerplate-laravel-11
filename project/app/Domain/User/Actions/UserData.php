@@ -19,7 +19,7 @@ class UserData extends Data
         public string|Optional $name,
 
         #[Nullable, StringType, In([RoleGroupEnum::ADMIN, RoleGroupEnum::CLIENT])]
-        public ?string         $group,
+        public ?string $group,
 
         #[Required, StringType, Email]
         public string|Optional $email,
@@ -29,7 +29,6 @@ class UserData extends Data
 
         #[Nullable, ArrayType]
         public array|Optional $roles,
-    )
-    {
+    ) {
     }
 }

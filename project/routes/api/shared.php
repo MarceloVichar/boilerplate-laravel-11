@@ -15,4 +15,3 @@ Route::middleware(['auth:sanctum'])
 
         Route::post('/logout', LogoutController::class)->name('logout');
     });
-

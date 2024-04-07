@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Http\Api\Requests\Auth;
 
 use App\Http\Shared\Requests\FormRequest;
-use Illuminate\Validation\Rule;
 
 class LoginRequest extends FormRequest
 {

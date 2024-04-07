@@ -3,7 +3,6 @@
 namespace App\Domain\Role\Rules;
 
 use App\Domain\Shared\Services\LaravelPermissions\Role;
-use App\Domain\User\Models\User;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
@@ -57,7 +56,7 @@ class RoleBelongsToUserGroup implements ValidationRule
         $role = Role::where('name', $value)->first();
 
         if (! $role || $role->group !== $this->userGroup) {
-            $fail($this->failMessage ?? 'The ' . $attribute . ' must be from the same group as the user.');
+            $fail($this->failMessage ?? 'The '.$attribute.' must be from the same group as the user.');
         }
     }
 }
