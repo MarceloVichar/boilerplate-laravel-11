@@ -1,4 +1,12 @@
-# Bolerplate Laravel 11 #
+<div align="center">
+  
+# Boilerplate Laravel 11
+
+</div>
+
+<div align="center">
+  <img src="docs/lets-laravel.png" alt="Lets + Laravel" width="600"/>
+</div>  
 
 Esta é a base de projetos Laravel utilizada na Lets.
 
