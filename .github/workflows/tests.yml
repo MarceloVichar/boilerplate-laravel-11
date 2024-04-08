@@ -26,16 +26,11 @@ jobs:
       postgres-test:
         image: postgres:16-alpine
         env:
-          DB_HOST: postgres-test
-          DB_USERNAME: postgres
-          DB_PASSWORD: laraveldocker
-          DB_DATABASE: app_dev
-          DB_PORT: 5432
           POSTGRES_DB: app_dev
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: laraveldocker
         ports:
-          - 5432:5432
+          - 5432/tcp
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
 
     steps:
@@ -65,6 +60,9 @@ jobs:
       - name: Run tests (Unit)
         working-directory: ./project
         run: php artisan test --testsuite Unit
+        env:
+          DB_HOST: localhost
+          DB_PORT: ${{ job.services.postgres-test.ports[5432] }}
 
       - name: Run tests (Feature)
         working-directory: ./project
